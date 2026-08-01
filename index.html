@@ -1,0 +1,414 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Banquet Brothers catering, weekly specials, party trays, and custom menus." />
+  <meta name="theme-color" content="#0a0f0c" />
+  <title>Banquet Brothers | Catering & Weekly Specials</title>
+  <link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCI+PHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiByeD0iMTQiIGZpbGw9IiMwNzBhMDgiLz48cGF0aCBkPSJNMTcgMTRoMThjOSAwIDE1IDQgMTUgMTIgMCA1LTIgOC02IDEwIDUgMiA4IDYgOCAxMiAwIDEwLTggMTUtMjAgMTVIMTdWMTR6bTE0IDE5YzUgMCA4LTIgOC02IDAtNC0zLTYtOC02aC0zdjEyaDN6bTIgMjJjNiAwIDktMiA5LTcgMC01LTMtNy05LTdoLTV2MTRoNXoiIGZpbGw9IiMzNWQwNmYiLz48L3N2Zz4K" type="image/svg+xml" />
+  <style>
+:root {
+  --green: #35d06f;
+  --green-dark: #1ea956;
+  --black: #070a08;
+  --charcoal: #111713;
+  --charcoal-2: #19211b;
+  --cream: #f6f4ed;
+  --white: #ffffff;
+  --muted: #b8c1ba;
+  --ink: #172019;
+  --line: rgba(255,255,255,.12);
+  --shadow: 0 20px 60px rgba(0,0,0,.24);
+  --radius: 22px;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: var(--cream);
+  color: var(--ink);
+  line-height: 1.6;
+}
+img { max-width: 100%; display: block; }
+a { color: inherit; }
+button, input, select, textarea { font: inherit; }
+.container { width: min(1140px, calc(100% - 36px)); margin-inline: auto; }
+.skip-link { position: absolute; left: -9999px; top: 0; }
+.skip-link:focus { left: 16px; top: 16px; background: white; padding: 10px 14px; z-index: 9999; }
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: rgba(7,10,8,.92);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(255,255,255,.08);
+}
+.nav-wrap { min-height: 78px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+.brand img { width: 188px; height: auto; }
+.site-nav { display: flex; align-items: center; gap: 24px; color: white; }
+.site-nav a { text-decoration: none; font-weight: 700; font-size: .95rem; }
+.site-nav a:hover { color: var(--green); }
+.nav-call { background: var(--green); color: var(--black) !important; padding: 11px 16px; border-radius: 999px; }
+.menu-toggle { display: none; background: transparent; color: white; border: 1px solid var(--line); border-radius: 10px; padding: 8px 12px; }
+
+.hero {
+  color: white;
+  background:
+    radial-gradient(circle at 82% 18%, rgba(53,208,111,.24), transparent 25%),
+    linear-gradient(135deg, #070a08 0%, #101812 58%, #09100c 100%);
+  padding: 86px 0 76px;
+  overflow: hidden;
+}
+.hero-grid { display: grid; grid-template-columns: 1.08fr .92fr; gap: 54px; align-items: center; }
+.eyebrow { margin: 0 0 10px; text-transform: uppercase; letter-spacing: .16em; font-size: .78rem; font-weight: 900; color: var(--green-dark); }
+.hero .eyebrow, .light .eyebrow, .request-copy .eyebrow { color: var(--green); }
+h1, h2, h3 { line-height: 1.08; margin-top: 0; }
+h1 { font-size: clamp(3rem, 7vw, 6rem); letter-spacing: -.055em; margin-bottom: 20px; max-width: 700px; }
+h2 { font-size: clamp(2.1rem, 4vw, 3.4rem); letter-spacing: -.04em; margin-bottom: 16px; }
+h3 { font-size: 1.35rem; }
+.lead { color: #d1d8d3; font-size: 1.15rem; max-width: 640px; }
+.hero-actions { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 28px; }
+.btn { display: inline-flex; align-items: center; justify-content: center; border: 0; text-decoration: none; font-weight: 900; border-radius: 999px; padding: 14px 22px; cursor: pointer; transition: transform .2s ease, box-shadow .2s ease, background .2s ease; }
+.btn:hover { transform: translateY(-2px); }
+.btn-primary { background: var(--green); color: var(--black); box-shadow: 0 10px 28px rgba(53,208,111,.25); }
+.btn-primary:hover { background: #50e386; }
+.btn-secondary { color: white; border: 1px solid rgba(255,255,255,.22); background: rgba(255,255,255,.04); }
+.btn-full { width: 100%; }
+.quick-info { display: flex; gap: 10px; flex-wrap: wrap; color: #aeb9b1; margin-top: 24px; font-size: .94rem; }
+.quick-info a { text-decoration: none; }
+.hero-card { position: relative; background: linear-gradient(145deg, #1b261e, #0c120e); border: 1px solid rgba(255,255,255,.12); border-radius: 32px; padding: 18px; box-shadow: var(--shadow); transform: rotate(1.5deg); }
+.hero-card img { width: 100%; border-radius: 22px; }
+.hero-badge { position: absolute; left: 32px; bottom: 30px; background: rgba(7,10,8,.9); color: white; border: 1px solid rgba(255,255,255,.14); padding: 10px 14px; border-radius: 999px; font-weight: 800; }
+
+.trust-strip { background: var(--green); padding: 24px 0; }
+.trust-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+.trust-grid div { display: flex; flex-direction: column; }
+.trust-grid strong { font-size: 1.05rem; }
+.trust-grid span { font-size: .9rem; }
+
+.section { padding: 90px 0; }
+.section-heading { max-width: 760px; margin-bottom: 38px; }
+.section-heading > p:last-child { color: #58645b; font-size: 1.04rem; }
+.cards.three { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+.service-card { background: white; border: 1px solid #dfe5df; border-radius: var(--radius); padding: 30px; box-shadow: 0 12px 36px rgba(25,33,27,.07); }
+.service-card .icon { font-size: 2rem; margin-bottom: 20px; }
+.service-card p { color: #5c685f; margin-bottom: 0; }
+
+.section-dark { color: white; background: linear-gradient(145deg, var(--black), var(--charcoal)); }
+.light > p:last-child { color: var(--muted); }
+.menu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.menu-panel { position: relative; background: rgba(255,255,255,.045); border: 1px solid var(--line); border-radius: var(--radius); padding: 32px; }
+.featured-panel { border-color: rgba(53,208,111,.55); box-shadow: inset 0 0 0 1px rgba(53,208,111,.08); }
+.panel-tag { position: absolute; right: 20px; top: 20px; background: var(--green); color: var(--black); padding: 5px 10px; border-radius: 999px; font-size: .72rem; font-weight: 900; text-transform: uppercase; letter-spacing: .08em; }
+.menu-list { list-style: none; margin: 0; padding: 0; }
+.menu-list li { display: flex; flex-direction: column; gap: 2px; padding: 16px 0; border-bottom: 1px solid var(--line); }
+.menu-list li:last-child { border-bottom: 0; }
+.menu-list span { font-weight: 800; }
+.menu-list small { color: var(--muted); }
+.menu-cta { margin-top: 24px; display: flex; justify-content: space-between; gap: 24px; align-items: center; background: var(--charcoal-2); border: 1px solid var(--line); border-radius: var(--radius); padding: 24px; }
+.menu-cta div { display: flex; flex-direction: column; }
+.menu-cta span { color: var(--muted); }
+
+.gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.gallery-grid figure { margin: 0; overflow: hidden; background: white; border-radius: var(--radius); box-shadow: 0 12px 34px rgba(25,33,27,.09); }
+.gallery-grid img { width: 100%; aspect-ratio: 4/3; object-fit: cover; background: #111713; }
+.gallery-grid figcaption { padding: 16px 18px; font-weight: 850; }
+
+.request-section { background: #eaf0ea; }
+.request-grid { display: grid; grid-template-columns: .82fr 1.18fr; gap: 54px; align-items: start; }
+.request-copy { position: sticky; top: 120px; }
+.contact-card { display: grid; gap: 10px; margin-top: 28px; }
+.contact-card a { text-decoration: none; background: white; border: 1px solid #dbe3dc; border-radius: 14px; padding: 14px 16px; }
+.request-form { background: white; border: 1px solid #dce4dd; border-radius: 28px; padding: 30px; box-shadow: 0 18px 46px rgba(19,31,22,.1); }
+.field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+label { display: grid; gap: 7px; margin-bottom: 16px; font-weight: 800; font-size: .92rem; }
+input, select, textarea { width: 100%; border: 1px solid #ccd6ce; border-radius: 12px; background: #fbfcfb; padding: 12px 13px; color: var(--ink); }
+textarea { resize: vertical; }
+input:focus, select:focus, textarea:focus { outline: 3px solid rgba(53,208,111,.22); border-color: var(--green-dark); }
+.form-note { margin: 12px 0 0; color: #6b776e; font-size: .82rem; text-align: center; }
+
+.site-footer { background: var(--black); color: white; padding: 46px 0 24px; }
+.footer-grid { display: flex; justify-content: space-between; gap: 30px; align-items: end; }
+.footer-grid p { color: var(--muted); margin-bottom: 0; }
+.footer-links { display: grid; gap: 8px; text-align: right; }
+.footer-links a { text-decoration: none; color: #dfe6e0; }
+.copyright { border-top: 1px solid var(--line); margin-top: 28px; padding-top: 18px; color: #8d9a90; font-size: .85rem; }
+
+@media (max-width: 900px) {
+  .menu-toggle { display: block; }
+  .site-nav { display: none; position: absolute; left: 18px; right: 18px; top: 72px; flex-direction: column; align-items: stretch; background: #0c110d; border: 1px solid var(--line); border-radius: 18px; padding: 18px; box-shadow: var(--shadow); }
+  .site-nav.open { display: flex; }
+  .hero-grid, .request-grid { grid-template-columns: 1fr; }
+  .hero-card { max-width: 640px; }
+  .request-copy { position: static; }
+  .cards.three, .gallery-grid { grid-template-columns: 1fr; }
+  .menu-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 640px) {
+  .container { width: min(100% - 24px, 1140px); }
+  .hero { padding: 56px 0; }
+  .section { padding: 66px 0; }
+  .trust-grid { grid-template-columns: 1fr; }
+  .field-row { grid-template-columns: 1fr; gap: 0; }
+  .menu-cta, .footer-grid { flex-direction: column; align-items: stretch; }
+  .footer-links { text-align: left; }
+  .quick-info span { display: none; }
+  .hero-actions .btn { width: 100%; }
+}
+
+</style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="#top" aria-label="Banquet Brothers home">
+        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1NjAgMTgwIiByb2xlPSJpbWciIGFyaWEtbGFiZWxsZWRieT0idGl0bGUgZGVzYyI+Cjx0aXRsZSBpZD0idGl0bGUiPkJhbnF1ZXQgQnJvdGhlcnM8L3RpdGxlPjxkZXNjIGlkPSJkZXNjIj5HcmVlbiBhbmQgd2hpdGUgQmFucXVldCBCcm90aGVycyBsb2dvPC9kZXNjPgo8cmVjdCB3aWR0aD0iNTYwIiBoZWlnaHQ9IjE4MCIgcng9IjI4IiBmaWxsPSIjMDcwYTA4Ii8+CjxwYXRoIGQ9Ik0zOCAxMzBDOTIgMTA0IDExMCA1MiAxNzIgNDhjNDYtMyA3MCAyNiAxMDAgMzYgNDMgMTUgODctMTQgMTMwLTggNDIgNiA3MyAyOCAxMjAgMTIiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzM1ZDA2ZiIgc3Ryb2tlLXdpZHRoPSIxMCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBvcGFjaXR5PSIuNzUiLz4KPHRleHQgeD0iMjgwIiB5PSI3OCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iI2ZmZmZmZiIgZm9udC1mYW1pbHk9IkFyaWFsLCBIZWx2ZXRpY2EsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iNDYiIGZvbnQtd2VpZ2h0PSI5MDAiIGxldHRlci1zcGFjaW5nPSIyIj5CQU5RVUVUPC90ZXh0Pgo8dGV4dCB4PSIyODAiIHk9IjEzMiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iIzM1ZDA2ZiIgZm9udC1mYW1pbHk9IkFyaWFsLCBIZWx2ZXRpY2EsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iNDgiIGZvbnQtd2VpZ2h0PSI5MDAiIGxldHRlci1zcGFjaW5nPSIxIj5CUk9USEVSUzwvdGV4dD4KPGNpcmNsZSBjeD0iNTAiIGN5PSI0OCIgcj0iMTMiIGZpbGw9IiMzNWQwNmYiLz48Y2lyY2xlIGN4PSI1MTAiIGN5PSIxMzIiIHI9IjEzIiBmaWxsPSIjMzVkMDZmIi8+Cjwvc3ZnPgo=" alt="Banquet Brothers logo" width="210" height="70" />
+      </a>
+      <button class="menu-toggle" aria-expanded="false" aria-controls="site-nav">Menu</button>
+      <nav id="site-nav" class="site-nav" aria-label="Primary navigation">
+        <a href="#catering">Catering</a>
+        <a href="#menu">Menu</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#request">Request Catering</a>
+        <a class="nav-call" href="tel:+18888122673">Call 1-888-812-2673</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section id="top" class="hero">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">Great food. Big flavor. Easy ordering.</p>
+          <h1>Food worth gathering for.</h1>
+          <p class="lead">Banquet Brothers serves crowd-pleasing catering, party trays, weekly specials, and custom menus for your next event.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#request">Request Catering</a>
+            <a class="btn btn-secondary" href="tel:+18888122673">Call Anytime</a>
+          </div>
+          <div class="quick-info" aria-label="Contact information">
+            <a href="mailto:TheBanquetBrothers@yahoo.com">TheBanquetBrothers@yahoo.com</a>
+            <span aria-hidden="true">•</span>
+            <a href="https://www.instagram.com/thebanquetbrother/" target="_blank" rel="noopener">@thebanquetbrother</a>
+          </div>
+        </div>
+        <div class="hero-card" aria-label="Featured foods">
+          <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA4MDAgNjQwIj4KPGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJiZyIgeDE9IjAiIHkxPSIwIiB4Mj0iMSIgeTI9IjEiPjxzdG9wIHN0b3AtY29sb3I9IiMyNTMzMjkiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiMwZDEzMGYiLz48L2xpbmVhckdyYWRpZW50PjxmaWx0ZXIgaWQ9InMiPjxmZURyb3BTaGFkb3cgZHg9IjAiIGR5PSIxOCIgc3RkRGV2aWF0aW9uPSIxNiIgZmxvb2Qtb3BhY2l0eT0iLjM1Ii8+PC9maWx0ZXI+PC9kZWZzPgo8cmVjdCB3aWR0aD0iODAwIiBoZWlnaHQ9IjY0MCIgcng9IjM0IiBmaWxsPSJ1cmwoI2JnKSIvPgo8Y2lyY2xlIGN4PSI2NTAiIGN5PSI5MCIgcj0iODAiIGZpbGw9IiMzNWQwNmYiIG9wYWNpdHk9Ii4xMiIvPjxjaXJjbGUgY3g9IjEyMCIgY3k9IjU2MCIgcj0iMTEwIiBmaWxsPSIjMzVkMDZmIiBvcGFjaXR5PSIuMDgiLz4KPGcgZmlsdGVyPSJ1cmwoI3MpIj48ZWxsaXBzZSBjeD0iNDA1IiBjeT0iMzYwIiByeD0iMjkwIiByeT0iMTg1IiBmaWxsPSIjZjZmNGVkIi8+PGVsbGlwc2UgY3g9IjQwNSIgY3k9IjM0NSIgcng9IjI1MCIgcnk9IjE0NSIgZmlsbD0iI2U0ZGZkMSIvPjwvZz4KPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTkwIDIzNSkiPjxwYXRoIGQ9Ik0wIDk1YzQwLTkwIDEyMC0xMDQgMTk4LTYyIDM4IDIwIDYxIDQ2IDgyIDg5TDAgOTV6IiBmaWxsPSIjZDY5YzU0Ii8+PHBhdGggZD0iTTEyIDkxYzQxLTUxIDk1LTY5IDE2MC00OCAzOSAxMyA3MiAzNyA5NiA3MUwxMiA5MXoiIGZpbGw9IiM3YjQwMjIiLz48cGF0aCBkPSJNMzAgODZjNTYtMzMgMTI0LTM1IDIwMCAxMCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZjBkNjZjIiBzdHJva2Utd2lkdGg9IjIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz48cGF0aCBkPSJNMTAgOTVjNzkgMjkgMTc2IDMxIDI3NCAwIiBmaWxsPSJub25lIiBzdHJva2U9IiNjNDdiMzciIHN0cm9rZS13aWR0aD0iMjQiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPjwvZz4KPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoNTIwIDI1MCkiPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSI0MCIgaGVpZ2h0PSIxNjAiIHJ4PSIxOCIgZmlsbD0iI2QwOGI0MiIgdHJhbnNmb3JtPSJyb3RhdGUoOCkiLz48cmVjdCB4PSI1NSIgeT0iMTAiIHdpZHRoPSI0MCIgaGVpZ2h0PSIxNTAiIHJ4PSIxOCIgZmlsbD0iI2UyYTA0ZiIgdHJhbnNmb3JtPSJyb3RhdGUoLTUpIi8+PHJlY3QgeD0iMTA1IiB5PSIyMCIgd2lkdGg9IjQwIiBoZWlnaHQ9IjE0NCIgcng9IjE4IiBmaWxsPSIjYzY3YTM0IiB0cmFuc2Zvcm09InJvdGF0ZSgxMikiLz48L2c+CjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDMxMCAzOTUpIj48Y2lyY2xlIGN4PSIwIiBjeT0iMCIgcj0iNDIiIGZpbGw9IiM5ZjMzMjgiLz48Y2lyY2xlIGN4PSI4NiIgY3k9IjE1IiByPSIzOCIgZmlsbD0iI2I1NDAzMiIvPjxjaXJjbGUgY3g9IjE2OCIgY3k9IjAiIHI9IjQyIiBmaWxsPSIjOGUyZDI0Ii8+PHBhdGggZD0iTS0yOC0yYzE4LTEyIDM4LTEyIDU2IDBNNTggMTNjMTgtMTIgMzgtMTIgNTYgME0xNDAtMmMxOC0xMiAzOC0xMiA1NiAwIiBzdHJva2U9IiNlNmI3NjAiIHN0cm9rZS13aWR0aD0iOCIgZmlsbD0ibm9uZSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+PC9nPgo8dGV4dCB4PSI0MDAiIHk9IjU2MCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iI2ZmZmZmZiIgZm9udC1zaXplPSI0NCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXdlaWdodD0iOTAwIj5CSUcgRkxBVk9SLiBFQVNZIENBVEVSSU5HLjwvdGV4dD4KPC9zdmc+Cg==" alt="Illustration of Banquet Brothers catering favorites" />
+          <div class="hero-badge">Catering • Parties • Events</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="trust-strip" aria-label="Service highlights">
+      <div class="container trust-grid">
+        <div><strong>Custom menus</strong><span>Built around your event</span></div>
+        <div><strong>Easy ordering</strong><span>Phone, email, or online request</span></div>
+        <div><strong>Party favorites</strong><span>Sandwiches, apps, trays, and more</span></div>
+      </div>
+    </section>
+
+    <section id="catering" class="section">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow">Catering made simple</p>
+          <h2>Choose your favorites. We handle the food.</h2>
+          <p>Perfect for birthdays, football parties, family gatherings, work events, fundraisers, and celebrations.</p>
+        </div>
+        <div class="cards three">
+          <article class="service-card">
+            <div class="icon">🥪</div>
+            <h3>Sandwich Trays</h3>
+            <p>Cheesesteaks, chicken cheesesteaks, smash burgers, chicken parm sandwiches, and more.</p>
+          </article>
+          <article class="service-card">
+            <div class="icon">🍗</div>
+            <h3>Appetizer Spreads</h3>
+            <p>Cheesesteak egg rolls, buffalo chicken wontons, mozzarella wedges, potstickers, fries, and vegetables.</p>
+          </article>
+          <article class="service-card">
+            <div class="icon">🍽️</div>
+            <h3>Custom Party Menus</h3>
+            <p>Tell us your guest count, budget, date, and favorites. We will help shape a menu that fits.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="menu" class="section section-dark">
+      <div class="container">
+        <div class="section-heading light">
+          <p class="eyebrow">Popular catering choices</p>
+          <h2>Build a menu your guests will remember.</h2>
+          <p>Pricing may vary by quantity, customization, and event needs. Contact us for a quote.</p>
+        </div>
+
+        <div class="menu-grid">
+          <article class="menu-panel">
+            <h3>Sandwiches & Mains</h3>
+            <ul class="menu-list">
+              <li><span>Banquet Brothers Cheesesteak</span><small>Classic crowd favorite</small></li>
+              <li><span>Chicken Cheesesteak</span><small>Made fresh to order</small></li>
+              <li><span>Smash Burgers</span><small>Bold flavor and crispy edges</small></li>
+              <li><span>Chicken Parm Sandwiches</span><small>Saucy, cheesy, satisfying</small></li>
+              <li><span>Roast Pork or Roast Beef</span><small>Perfect for party trays</small></li>
+            </ul>
+          </article>
+
+          <article class="menu-panel featured-panel">
+            <span class="panel-tag">Fan favorites</span>
+            <h3>Apps & Sides</h3>
+            <ul class="menu-list">
+              <li><span>Cheesesteak Egg Rolls</span><small>Crispy and packed with flavor</small></li>
+              <li><span>Buffalo Chicken Wontons</span><small>A Banquet Brothers favorite</small></li>
+              <li><span>Mozzarella Wedges</span><small>Golden and shareable</small></li>
+              <li><span>Potstickers</span><small>Great for groups</small></li>
+              <li><span>Fresh-Cut Fries</span><small>Always a crowd pleaser</small></li>
+              <li><span>Brussels Sprouts</span><small>Served with garlic aioli</small></li>
+            </ul>
+          </article>
+        </div>
+
+        <div class="menu-cta">
+          <div>
+            <strong>Have a specific menu in mind?</strong>
+            <span>Send us the details and we will help with your catering request.</span>
+          </div>
+          <a class="btn btn-primary" href="#request">Start a Request</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="gallery" class="section">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow">Made for sharing</p>
+          <h2>Banquet Brothers favorites</h2>
+        </div>
+        <div class="gallery-grid">
+          <figure><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA4MDAgNjAwIj48cmVjdCB3aWR0aD0iODAwIiBoZWlnaHQ9IjYwMCIgZmlsbD0iIzEwMTcxMiIvPjxjaXJjbGUgY3g9IjY2MCIgY3k9IjEwMCIgcj0iOTAiIGZpbGw9IiMzNWQwNmYiIG9wYWNpdHk9Ii4xNSIvPjxlbGxpcHNlIGN4PSI0MDAiIGN5PSIzOTAiIHJ4PSIzMDAiIHJ5PSIxMjUiIGZpbGw9IiNlOWUyZDMiLz48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxNjUgMjEwKSI+PHBhdGggZD0iTTAgMTUwQzcwIDQ1IDMwMCAyMCA0NzAgMTQ1Yy0yMCA0MC02NCA3NS0xMjAgODVIMTA1QzU1IDIyMCAyMCAxOTAgMCAxNTB6IiBmaWxsPSIjYzk4MjNkIi8+PHBhdGggZD0iTTM1IDE0NWM5NS03MiAyNTAtNzYgNDAwLTciIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzc2NDAxZiIgc3Ryb2tlLXdpZHRoPSI1MCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+PHBhdGggZD0iTTQ1IDEzNWMxMTAtNDQgMjUwLTQ1IDM5MCAyIiBmaWxsPSJub25lIiBzdHJva2U9IiNmMGQ2NmMiIHN0cm9rZS13aWR0aD0iMjQiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPjwvZz48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxODAgNDMwKSI+PHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjExMCIgcng9IjE0IiBmaWxsPSIjZTJhMDRmIiB0cmFuc2Zvcm09InJvdGF0ZSgtMTQpIi8+PHJlY3QgeD0iNTUiIHdpZHRoPSIzMiIgaGVpZ2h0PSIxMjAiIHJ4PSIxNCIgZmlsbD0iI2M5ODUzOSIgdHJhbnNmb3JtPSJyb3RhdGUoOCkiLz48cmVjdCB4PSIxMTAiIHdpZHRoPSIzMiIgaGVpZ2h0PSIxMTIiIHJ4PSIxNCIgZmlsbD0iI2U2YWQ1OSIgdHJhbnNmb3JtPSJyb3RhdGUoLTQpIi8+PC9nPjwvc3ZnPgo=" alt="Illustration of a cheesesteak and fries" /><figcaption>Cheesesteaks & fries</figcaption></figure>
+          <figure><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA4MDAgNjAwIj48cmVjdCB3aWR0aD0iODAwIiBoZWlnaHQ9IjYwMCIgZmlsbD0iIzE1MWQxNyIvPjxjaXJjbGUgY3g9IjEyMCIgY3k9Ijk1IiByPSI4MCIgZmlsbD0iIzM1ZDA2ZiIgb3BhY2l0eT0iLjEyIi8+PGVsbGlwc2UgY3g9IjQwMCIgY3k9IjM1MCIgcng9IjMwMCIgcnk9IjE5MCIgZmlsbD0iI2VlZThkYyIvPjxnIGZpbGw9IiNkNTk0NDciIHN0cm9rZT0iI2IwNmQyZCIgc3Ryb2tlLXdpZHRoPSI4Ij48cmVjdCB4PSIxNzAiIHk9IjIxMCIgd2lkdGg9IjE1MCIgaGVpZ2h0PSI3MCIgcng9IjI4IiB0cmFuc2Zvcm09InJvdGF0ZSgtMTIgMjQ1IDI0NSkiLz48cmVjdCB4PSIzMjAiIHk9IjE4MCIgd2lkdGg9IjE1MCIgaGVpZ2h0PSI3MCIgcng9IjI4IiB0cmFuc2Zvcm09InJvdGF0ZSg4IDM5NSAyMTUpIi8+PHJlY3QgeD0iNDgwIiB5PSIyMjUiIHdpZHRoPSIxNTAiIGhlaWdodD0iNzAiIHJ4PSIyOCIgdHJhbnNmb3JtPSJyb3RhdGUoLTcgNTU1IDI2MCkiLz48L2c+PGcgZmlsbD0iI2E5MzcyYiI+PHBhdGggZD0iTTIxMCAzNjBsNzUtNTAgNzAgNTgtNzIgNjJ6Ii8+PHBhdGggZD0iTTM2NSAzNDVsNzAtNDYgNzYgNTYtNzAgNjZ6Ii8+PHBhdGggZD0iTTUyMCAzNjVsNjQtNDggNzIgNTYtNjUgNjF6Ii8+PC9nPjxjaXJjbGUgY3g9IjQwNSIgY3k9IjQ1NSIgcj0iNTgiIGZpbGw9IiNmM2VmZTYiLz48Y2lyY2xlIGN4PSI0MDUiIGN5PSI0NTUiIHI9IjQzIiBmaWxsPSIjZDhjMzlkIi8+PC9zdmc+Cg==" alt="Illustration of assorted appetizers" /><figcaption>Apps & samplers</figcaption></figure>
+          <figure><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA4MDAgNjAwIj48cmVjdCB3aWR0aD0iODAwIiBoZWlnaHQ9IjYwMCIgZmlsbD0iIzBlMTUxMCIvPjxjaXJjbGUgY3g9IjY4MCIgY3k9IjQ5MCIgcj0iMTAwIiBmaWxsPSIjMzVkMDZmIiBvcGFjaXR5PSIuMSIvPjxyZWN0IHg9IjEyMCIgeT0iMTg1IiB3aWR0aD0iNTYwIiBoZWlnaHQ9IjI5MCIgcng9IjM1IiBmaWxsPSIjYmZjNmJmIi8+PHJlY3QgeD0iMTQ1IiB5PSIyMTAiIHdpZHRoPSI1MTAiIGhlaWdodD0iMjQwIiByeD0iMjYiIGZpbGw9IiNmMGVjZTMiLz48cGF0aCBkPSJNMTgwIDI1MGgxNzB2NzBIMTgweiIgZmlsbD0iI2IyNmEzMiIvPjxwYXRoIGQ9Ik0zNzAgMjUwaDIzNXY3MEgzNzB6IiBmaWxsPSIjOGYyZjI3Ii8+PHBhdGggZD0iTTE4MCAzNDBoMjA1djcwSDE4MHoiIGZpbGw9IiNkZjllNGIiLz48cGF0aCBkPSJNNDA1IDM0MGgyMDB2NzBINDA1eiIgZmlsbD0iIzVhOGY0NSIvPjxwYXRoIGQ9Ik0yNDUgMTU1aDMxMCIgc3Ryb2tlPSIjMzVkMDZmIiBzdHJva2Utd2lkdGg9IjE4IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz48L3N2Zz4K" alt="Illustration of catering trays" /><figcaption>Catering trays</figcaption></figure>
+        </div>
+      </div>
+    </section>
+
+    <section id="request" class="section request-section">
+      <div class="container request-grid">
+        <div class="request-copy">
+          <p class="eyebrow">Request catering</p>
+          <h2>Tell us about your event.</h2>
+          <p>Complete the form and tap “Create Email Request.” Your email app will open with the event details already filled in.</p>
+          <div class="contact-card">
+            <a href="tel:+18888122673"><strong>Call:</strong> 1-888-812-2673</a>
+            <a href="mailto:TheBanquetBrothers@yahoo.com"><strong>Email:</strong> TheBanquetBrothers@yahoo.com</a>
+            <a href="https://www.facebook.com/search/top?q=The%20Banquet%20Brothers" target="_blank" rel="noopener"><strong>Facebook:</strong> The Banquet Brothers</a>
+            <a href="https://www.instagram.com/thebanquetbrother/" target="_blank" rel="noopener"><strong>Instagram:</strong> @thebanquetbrother</a>
+          </div>
+        </div>
+
+        <form id="catering-form" class="request-form">
+          <div class="field-row">
+            <label>Full Name<input type="text" name="name" required autocomplete="name" /></label>
+            <label>Phone Number<input type="tel" name="phone" required autocomplete="tel" /></label>
+          </div>
+          <label>Email Address<input type="email" name="email" required autocomplete="email" /></label>
+          <div class="field-row">
+            <label>Event Date<input type="date" name="date" /></label>
+            <label>Guest Count<input type="number" name="guests" min="1" inputmode="numeric" /></label>
+          </div>
+          <label>Event Type
+            <select name="eventType">
+              <option>Birthday Party</option>
+              <option>Football / Sports Party</option>
+              <option>Family Gathering</option>
+              <option>Work Event</option>
+              <option>Fundraiser</option>
+              <option>Other</option>
+            </select>
+          </label>
+          <label>Menu Ideas or Special Requests<textarea name="details" rows="5" placeholder="Tell us what foods you are interested in, your budget, pickup needs, and any special requests."></textarea></label>
+          <button class="btn btn-primary btn-full" type="submit">Create Email Request</button>
+          <p class="form-note">This free website does not store your information. It creates a pre-filled email for you to send.</p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1NjAgMTgwIiByb2xlPSJpbWciIGFyaWEtbGFiZWxsZWRieT0idGl0bGUgZGVzYyI+Cjx0aXRsZSBpZD0idGl0bGUiPkJhbnF1ZXQgQnJvdGhlcnM8L3RpdGxlPjxkZXNjIGlkPSJkZXNjIj5HcmVlbiBhbmQgd2hpdGUgQmFucXVldCBCcm90aGVycyBsb2dvPC9kZXNjPgo8cmVjdCB3aWR0aD0iNTYwIiBoZWlnaHQ9IjE4MCIgcng9IjI4IiBmaWxsPSIjMDcwYTA4Ii8+CjxwYXRoIGQ9Ik0zOCAxMzBDOTIgMTA0IDExMCA1MiAxNzIgNDhjNDYtMyA3MCAyNiAxMDAgMzYgNDMgMTUgODctMTQgMTMwLTggNDIgNiA3MyAyOCAxMjAgMTIiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzM1ZDA2ZiIgc3Ryb2tlLXdpZHRoPSIxMCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBvcGFjaXR5PSIuNzUiLz4KPHRleHQgeD0iMjgwIiB5PSI3OCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iI2ZmZmZmZiIgZm9udC1mYW1pbHk9IkFyaWFsLCBIZWx2ZXRpY2EsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iNDYiIGZvbnQtd2VpZ2h0PSI5MDAiIGxldHRlci1zcGFjaW5nPSIyIj5CQU5RVUVUPC90ZXh0Pgo8dGV4dCB4PSIyODAiIHk9IjEzMiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iIzM1ZDA2ZiIgZm9udC1mYW1pbHk9IkFyaWFsLCBIZWx2ZXRpY2EsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iNDgiIGZvbnQtd2VpZ2h0PSI5MDAiIGxldHRlci1zcGFjaW5nPSIxIj5CUk9USEVSUzwvdGV4dD4KPGNpcmNsZSBjeD0iNTAiIGN5PSI0OCIgcj0iMTMiIGZpbGw9IiMzNWQwNmYiLz48Y2lyY2xlIGN4PSI1MTAiIGN5PSIxMzIiIHI9IjEzIiBmaWxsPSIjMzVkMDZmIi8+Cjwvc3ZnPgo=" alt="Banquet Brothers" width="180" height="60" />
+        <p>Great food for parties, events, and everyday cravings.</p>
+      </div>
+      <div class="footer-links">
+        <a href="tel:+18888122673">1-888-812-2673</a>
+        <a href="mailto:TheBanquetBrothers@yahoo.com">TheBanquetBrothers@yahoo.com</a>
+        <a href="#request">Catering Request</a>
+      </div>
+    </div>
+    <div class="container copyright">© <span id="year"></span> Banquet Brothers. All rights reserved.</div>
+  </footer>
+
+  <script>
+const menuToggle = document.querySelector('.menu-toggle');
+const siteNav = document.querySelector('.site-nav');
+const form = document.querySelector('#catering-form');
+
+document.querySelector('#year').textContent = new Date().getFullYear();
+
+menuToggle?.addEventListener('click', () => {
+  const isOpen = siteNav.classList.toggle('open');
+  menuToggle.setAttribute('aria-expanded', String(isOpen));
+});
+
+siteNav?.querySelectorAll('a').forEach((link) => {
+  link.addEventListener('click', () => {
+    siteNav.classList.remove('open');
+    menuToggle?.setAttribute('aria-expanded', 'false');
+  });
+});
+
+form?.addEventListener('submit', (event) => {
+  event.preventDefault();
+
+  const data = new FormData(form);
+  const name = String(data.get('name') || '');
+  const phone = String(data.get('phone') || '');
+  const email = String(data.get('email') || '');
+  const date = String(data.get('date') || 'Not provided');
+  const guests = String(data.get('guests') || 'Not provided');
+  const eventType = String(data.get('eventType') || 'Other');
+  const details = String(data.get('details') || 'No additional details provided.');
+
+  const subject = `Catering Request from ${name}`;
+  const body = [
+    'Hello Banquet Brothers,',
+    '',
+    'I would like to request catering information.',
+    '',
+    `Name: ${name}`,
+    `Phone: ${phone}`,
+    `Email: ${email}`,
+    `Event Date: ${date}`,
+    `Guest Count: ${guests}`,
+    `Event Type: ${eventType}`,
+    '',
+    'Menu Ideas / Special Requests:',
+    details,
+    '',
+    'Thank you!'
+  ].join('\n');
+
+  window.location.href = `mailto:TheBanquetBrothers@yahoo.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+});
+
+</script>
+</body>
+</html>
